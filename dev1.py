@@ -21,6 +21,7 @@ elif Jogar== 's':
     tentativa= 20
     while tentativa>0:
         chute= input('Qual o país?')
+        chute= chute.lower()
         if chute== pais:
             tentativa== 0
             print('Você acertou!!')
