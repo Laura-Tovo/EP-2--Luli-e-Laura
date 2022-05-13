@@ -104,3 +104,19 @@ def adiciona_em_ordem(pais,distancia,lista):
                 
             
     return lista_nova
+
+escolhidas=['outras']
+def sorteia_cor(bandeira):
+    cores=[]
+    for cor, quantidade in bandeira.items():
+        if quantidade > 0:
+            cores.append(cor)
+    for c in escolhidas:
+        cores.remove(c)
+    escolha = choice(cores)
+    escolhidas.append(escolha)
+    return escolha
+
+
+        
+        
