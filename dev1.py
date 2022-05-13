@@ -2,9 +2,10 @@ from paises import dados
 from paises import raio 
 from random import*
 from math import*
-from funcoes import normaliza
+from funcoes import normaliza, sorteia_letra
 from funcoes import sorteia_pais
 from funcoes import haversine
+from funcoes import sorteia_cor
 dic_paises= normaliza(dados)
 
 print('ACERTE O PAÍS')
@@ -13,6 +14,8 @@ print('Opções:\n -dica\n -desisto\n')
 Jogar= input('Vamos jogar?[s/n]')
 
 numeros= [1, 2, 3, 4, 5, 6]
+escolhidas=['outras']
+lista_restritas=[]
 
 if Jogar!= 's' and Jogar!='n':
     print('resposta não esperada')
@@ -52,6 +55,11 @@ elif Jogar== 's':
             
             area= dic_paises[pais]['area']
             populacao= dic_paises[pais]['populacao']
+            bandeira=dic_paises[pais]['bandeira']
+            cor_bandeira=sorteia_cor(bandeira)
+            capital=dic_paises[pais]['capital']
+            letra_capital=sorteia_letra
+            continente=dic_paises[pais]['continente']
             #função sorteia letra pra capital
             #falta função bandeira
         else:

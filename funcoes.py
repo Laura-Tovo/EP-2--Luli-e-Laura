@@ -49,6 +49,7 @@ def sorteia_letra(string,lista_restritas):
             i+=1
     if sorteada in lista_restritas:
         sorteada=''
+    lista_restritas.append(sorteada)
     return sorteada
 
 def esta_na_lista(pais,lista):
