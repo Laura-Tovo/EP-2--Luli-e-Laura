@@ -84,7 +84,8 @@ elif Jogar== 's':
             lista_ordem= adiciona_em_ordem(chute, distancia, paises_d)
             paises_d= lista_ordem
             print(lista_ordem)
-    
+    if tentativa== 0:
+        print(pais)
 
     
     
