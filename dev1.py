@@ -75,7 +75,6 @@ elif Jogar== 's':
                 tentativa=tentativa
         elif chute== 'desisto':
             tentativa== 0
-            Jogar= int(input('Quer jogar?[s/n'))
         else:
             tentativa-= 1
             latitude_p= dic_paises[pais]['geo']['latitude']
@@ -88,7 +87,10 @@ elif Jogar== 's':
             paises_d= lista_ordem
             print(lista_ordem)
     if tentativa== 0:
-        print(pais)
+        print('A resposta era {}'.format(pais))
+
+if tentativa== 0:
+    Jogar= int(input('Quer jogar?[s/n]'))
 
     
     
