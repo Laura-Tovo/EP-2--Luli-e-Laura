@@ -9,23 +9,13 @@ from funcoes import sorteia_cor
 from funcoes import adiciona_em_ordem
 dic_paises= normaliza(dados)
 
-print('ACERTE O PAÍS')
-print('Como funciona:\n O computador sorteia um país e você tem que tentar adivinhar em 20 tentativas\n Se estiver muito difícil pode comprar dicas')
-print('Opções:\n -dica\n -desisto\n')
-Jogar= input('Vamos jogar?[s/n]')
-
-numeros= [1, 2, 3, 4, 5, 6]
-escolhidas=['outras']
-lista_restritas=[]
-lista_sorteadas=[]
-lista_cores=[]
-
-if Jogar!= 's' and Jogar!='n':
-    print('resposta não esperada')
-    Jogar= input('Vamos jogar?[s/n]')
-elif Jogar== 'n':
-    print('Até logo')
-elif Jogar== 's':
+def jogar():
+    numeros= [1, 2, 3, 4, 5, 6]
+    escolhidas=['outras']
+    lista_restritas=[]
+    lista_sorteadas=[]
+    lista_cores=[]
+    paises_d = []
     pais= sorteia_pais(dic_paises)
     print ('O país já foi sorteado\nPode começar')
     tentativa= 20
@@ -74,6 +64,9 @@ elif Jogar== 's':
                 tentativa-= 7
             elif opcao== 6:
                 tentativa=tentativa
+        if chute == 'desisto':
+            print('O país sorteado era {}'.format(pais))
+            return 0
         else:
             tentativa-= 1
             latitude_p= dic_paises[pais]['geo']['latitude']
@@ -85,8 +78,38 @@ elif Jogar== 's':
             lista_ordem= adiciona_em_ordem(chute, distancia, paises_d)
             paises_d= lista_ordem
             print(lista_ordem)
-    
-            
+
+print('ACERTE O PAÍS')
+print('Como funciona:\n O computador sorteia um país e você tem que tentar adivinhar em 20 tentativas\n Se estiver muito difícil pode comprar dicas')
+print('Opções:\n -dica\n -desisto\n')
+
+while True:
+    Jogar = input('Vamos jogar?[s/n]').lower()
+    if Jogar in ['sim', 's', 'não', 'nao', 'n']:
+        break
+    print("Resposta inválida!")
+
+quer_jogar = Jogar in ['sim', 's']
+
+while quer_jogar:
+    jogar()
+    while True:
+        Jogar = input('Vamos jogar?[s/n]').lower()
+        if Jogar in ['sim', 's', 'não', 'nao', 'n']:
+            break
+
+    quer_jogar = Jogar in ['sim', 's']
+
+print('Até logo')
+
+"""
+    if Jogar!= 's' and Jogar!='n':
+        print('resposta não esperada')
+        Jogar= input('Vamos jogar?[s/n]')
+    elif Jogar== 'n':
+        print('Até logo')
+    elif Jogar== 's':
+"""   
 
         
 
