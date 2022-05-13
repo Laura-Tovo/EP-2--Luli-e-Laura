@@ -6,6 +6,7 @@ from funcoes import normaliza, sorteia_letra
 from funcoes import sorteia_pais
 from funcoes import haversine
 from funcoes import sorteia_cor
+from funcoes import adiciona_em_ordem
 dic_paises= normaliza(dados)
 
 print('ACERTE O PAÍS')
@@ -16,6 +17,7 @@ Jogar= input('Vamos jogar?[s/n]')
 numeros= [1, 2, 3, 4, 5, 6]
 escolhidas=['outras']
 lista_restritas=[]
+paises_d= []
 
 if Jogar!= 's' and Jogar!='n':
     print('resposta não esperada')
@@ -75,6 +77,12 @@ elif Jogar== 's':
             longitude= dic_paises[chute]['geo']['longitude']
             distancia= haversine(raio, latitude, longitude, latitude_p, longitude_p)
             print(('{:.2f} km').format(distancia))
+            lista_ordem= adiciona_em_ordem(chute, distancia, paises_d)
+            paises_d= lista_ordem
+            print(lista_ordem)
+    
+            
+
         
 
 
