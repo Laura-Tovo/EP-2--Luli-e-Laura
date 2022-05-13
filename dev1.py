@@ -35,6 +35,14 @@ elif Jogar== 's':
             print('inválido')
             tentativa= tentativa
         elif chute== 'dica':
+            area= dic_paises[pais]['area']
+            populacao= dic_paises[pais]['populacao']
+            bandeira=dic_paises[pais]['bandeira']
+            cor_bandeira=sorteia_cor(bandeira)
+            capital=dic_paises[pais]['capital']
+            letra_capital=sorteia_letra
+            continente=dic_paises[pais]['continente']
+
             print('Opções de dica:\n1. Área   -   vale 6 tentativas\n2. Letra da capital   -   vale 2 tentativa\n3. Cor da bandeira   -   vale 4 tentativas\n4. População   -   vale 5 tentativas\n5. Continente   -   vale 7 tentativas\n6. Voltar')
             opcao= int(input(('Escolha sua opção: {}').format(numeros)))
             if opcao not in numeros:
@@ -43,25 +51,22 @@ elif Jogar== 's':
             if opcao== 1 or opcao== 4 or opcao== 5:
                 numeros.remove(opcao)
             if opcao== 1:
+                print('A área é{}km²'.format(area))
                 tentativa-=6
             elif opcao== 2:
+                print('Letra da capital {}'.format(letra_capital))
                 tentativa-= 2
             elif opcao== 3:
+                print('Cores da bandeira {}'.format(cor_bandeira))
                 tentativa-= 4
             elif opcao== 4:
+                print('A população é de {} pessoas'.format(populacao))
                 tentativa-= 5
             elif opcao==5:
+                print('Fica na {}'.format(continente))
                 tentativa-= 7
-            
-            area= dic_paises[pais]['area']
-            populacao= dic_paises[pais]['populacao']
-            bandeira=dic_paises[pais]['bandeira']
-            cor_bandeira=sorteia_cor(bandeira)
-            capital=dic_paises[pais]['capital']
-            letra_capital=sorteia_letra
-            continente=dic_paises[pais]['continente']
-            #função sorteia letra pra capital
-            #falta função bandeira
+            elif opcao== 6:
+                tentativa=tentativa
         else:
             tentativa-= 1
             latitude_p= dic_paises[pais]['geo']['latitude']
