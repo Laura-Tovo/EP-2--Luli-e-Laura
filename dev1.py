@@ -11,7 +11,9 @@ print('ACERTE O PAÍS')
 print('Como funciona:\n O computador sorteia um país e você tem que tentar adivinhar em 20 tentativas\n Se estiver muito difícil pode comprar dicas')
 print('Opções:\n -dica\n -desisto\n')
 Jogar= input('Vamos jogar?[s/n]')
-#perguntar se pode while ou for, jogar== True
+
+numeros= [1, 2, 3, 4, 5, 6]
+
 if Jogar!= 's' and Jogar!='n':
     print('resposta não esperada')
     Jogar= input('Vamos jogar?[s/n]')
@@ -20,6 +22,7 @@ elif Jogar== 's':
     print ('O país já foi sorteado\nPode começar')
     tentativa= 20
     while tentativa>0:
+        print('você tem {} tentativas'.format(tentativa))
         chute= input('Qual o país?')
         chute= chute.lower()
         if chute== pais:
@@ -30,11 +33,22 @@ elif Jogar== 's':
             tentativa= tentativa
         elif chute== 'dica':
             print('Opções de dica:\n1. Área   -   vale 6 tentativas\n2. Letra da capital   -   vale 2 tentativa\n3. Cor da bandeira   -   vale 4 tentativas\n4. População   -   vale 5 tentativas\n5. Continente   -   vale 7 tentativas\n6. Voltar')
-            opcao= int(input('Escolha sua opção: 1/2/3/4/5/6'))
-            numeros= [1, 2, 3, 4, 5, 6]
+            opcao= int(input(('Escolha sua opção: {}').format(numeros)))
             if opcao not in numeros:
                 print('opção inválida')
                 opcao= int(input('Escolha sua opção: 1/2/3/4/5/6'))
+            if opcao== 1 or opcao== 4 or opcao== 5:
+                numeros.remove(opcao)
+            if opcao== 1:
+                tentativa-=6
+            elif opcao== 2:
+                tentativa-= 2
+            elif opcao== 3:
+                tentativa-= 4
+            elif opcao== 4:
+                tentativa-= 5
+            elif opcao==5:
+                tentativa-= 7
             
             area= dic_paises[pais]['area']
             populacao= dic_paises[pais]['populacao']
@@ -48,7 +62,7 @@ elif Jogar== 's':
             longitude= dic_paises[chute]['geo']['longitude']
             distancia= haversine(raio, latitude, longitude, latitude_p, longitude_p)
             print(('{:.2f} km').format(distancia))
-
+        
 
 
     
