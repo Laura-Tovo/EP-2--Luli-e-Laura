@@ -24,9 +24,21 @@ elif Jogar== 's':
         if chute== pais:
             tentativa== 0
             print('Você acertou!!')
-        if chute not in dic_paises.keys() and chute != 'dica' and chute!= 'desisto':
+        elif chute not in dic_paises.keys() and chute != 'dica' and chute!= 'desisto':
             print('inválido')
             tentativa= tentativa
+        elif chute== 'dica':
+            print('Opções de dica:\n1. Área   -   vale 6 tentativas\n2. Letra da capital   -   vale 2 tentativa\n3. Cor da bandeira   -   vale 4 tentativas\n4. População   -   vale 5 tentativas\n5. Continente   -   vale 7 tentativas\n6. Voltar')
+            opcao= int(input('Escolha sua opção: 1/2/3/4/5/6'))
+            numeros= [1, 2, 3, 4, 5, 6]
+            if opcao not in numeros:
+                print('opção inválida')
+                opcao= int(input('Escolha sua opção: 1/2/3/4/5/6'))
+            
+            area= dic_paises[pais]['area']
+            populacao= dic_paises[pais]['populacao']
+            #função sorteia letra pra capital
+            #falta função bandeira
         else:
             tentativa-= 1
             latitude_p= dic_paises[pais]['geo']['latitude']
