@@ -23,6 +23,8 @@ lista_cores=[]
 if Jogar!= 's' and Jogar!='n':
     print('resposta não esperada')
     Jogar= input('Vamos jogar?[s/n]')
+elif Jogar== 'n':
+    print('Até logo')
 elif Jogar== 's':
     pais= sorteia_pais(dic_paises)
     print ('O país já foi sorteado\nPode começar')
