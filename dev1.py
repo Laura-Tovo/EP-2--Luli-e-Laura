@@ -17,7 +17,8 @@ Jogar= input('Vamos jogar?[s/n]')
 numeros= [1, 2, 3, 4, 5, 6]
 escolhidas=['outras']
 lista_restritas=[]
-paises_d= []
+lista_sorteadas=[]
+lista_cores=[]
 
 if Jogar!= 's' and Jogar!='n':
     print('resposta não esperada')
@@ -41,8 +42,10 @@ elif Jogar== 's':
             populacao= dic_paises[pais]['populacao']
             bandeira=dic_paises[pais]['bandeira']
             cor_bandeira=sorteia_cor(bandeira)
+            lista_cores.append(cor_bandeira)
             capital=dic_paises[pais]['capital']
-            letra_capital=sorteia_letra
+            letra_capital=sorteia_letra(capital,lista_restritas)
+            lista_sorteadas.append(letra_capital)
             continente=dic_paises[pais]['continente']
 
             print('Opções de dica:\n1. Área   -   vale 6 tentativas\n2. Letra da capital   -   vale 2 tentativa\n3. Cor da bandeira   -   vale 4 tentativas\n4. População   -   vale 5 tentativas\n5. Continente   -   vale 7 tentativas\n6. Voltar')
@@ -56,10 +59,10 @@ elif Jogar== 's':
                 print('A área é{}km²'.format(area))
                 tentativa-=6
             elif opcao== 2:
-                print('Letra da capital {}'.format(letra_capital))
+                print('Letra da capital {}'.format(lista_sorteadas))
                 tentativa-= 2
             elif opcao== 3:
-                print('Cores da bandeira {}'.format(cor_bandeira))
+                print('Cores da bandeira {}'.format(lista_cores))
                 tentativa-= 4
             elif opcao== 4:
                 print('A população é de {} pessoas'.format(populacao))
