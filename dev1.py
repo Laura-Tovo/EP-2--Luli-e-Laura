@@ -33,7 +33,7 @@ elif Jogar== 's':
         chute= input('Qual o país?')
         chute= chute.lower()
         if chute== pais:
-            tentativa== 0
+            tentativa= 0
             print('Você acertou!!')
         elif chute not in dic_paises.keys() and chute != 'dica' and chute!= 'desisto':
             print('inválido')
@@ -73,6 +73,9 @@ elif Jogar== 's':
                 tentativa-= 7
             elif opcao== 6:
                 tentativa=tentativa
+        elif chute== 'desisto':
+            tentativa== 0
+            Jogar= int(input('Quer jogar?[s/n'))
         else:
             tentativa-= 1
             latitude_p= dic_paises[pais]['geo']['latitude']
