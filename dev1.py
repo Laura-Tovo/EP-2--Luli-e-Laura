@@ -85,6 +85,11 @@ elif Jogar== 's':
             print(('{:.2f} km').format(distancia))
             lista_ordem= adiciona_em_ordem(chute, distancia, paises_d)
             paises_d= lista_ordem
+            lista_ordem=str(lista_ordem)
+            lista_ordem=lista_ordem.strip('[]')
+            lista_ordem=lista_ordem.replace(',','')
+            lista_ordem=lista_ordem.replace('[','')
+            lista_ordem=lista_ordem.replace(']','\n')
             print(lista_ordem)
     if tentativa== 0:
         print('A resposta era {}'.format(pais))
