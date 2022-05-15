@@ -14,13 +14,6 @@ print('Como funciona:\n O computador sorteia um país e você tem que tentar adi
 print('Opções:\n -dica\n -desisto\n')
 Jogar= input('Vamos jogar?[s/n]')
 
-numeros= [1, 2, 3, 4, 5, 6]
-escolhidas=['outras']
-lista_restritas=[]
-lista_sorteadas=[]
-lista_cores=[]
-paises_d= []
-
 if Jogar!= 's' and Jogar!='n':
     print('resposta não esperada')
     Jogar= input('Vamos jogar?[s/n]')
@@ -29,6 +22,13 @@ elif Jogar== 's':
     print ('O país já foi sorteado\nPode começar')
     tentativa= 20
     while tentativa>-1:
+        if tentativa== 20:
+            numeros= [1, 2, 3, 4, 5, 6]
+            escolhidas=['outras']
+            lista_restritas=[]
+            lista_sorteadas=[]
+            lista_cores=[]
+            paises_d= []
         print('você tem {} tentativas'.format(tentativa))
         chute= input('Qual o país?')
         chute= chute.lower()
