@@ -28,7 +28,7 @@ elif Jogar== 's':
     pais= sorteia_pais(dic_paises)
     print ('O país já foi sorteado\nPode começar')
     tentativa= 20
-    while tentativa>0:
+    while tentativa>-1:
         print('você tem {} tentativas'.format(tentativa))
         chute= input('Qual o país?')
         chute= chute.lower()
@@ -74,7 +74,7 @@ elif Jogar== 's':
             elif opcao== 6:
                 tentativa=tentativa
         elif chute== 'desisto':
-            tentativa== 0
+            tentativa= 0
         else:
             tentativa-= 1
             latitude_p= dic_paises[pais]['geo']['latitude']
@@ -91,11 +91,19 @@ elif Jogar== 's':
             lista_ordem=lista_ordem.replace('[','')
             lista_ordem=lista_ordem.replace(']','\n')
             print(lista_ordem)
-    if tentativa== 0:
-        print('A resposta era {}'.format(pais))
-
-if tentativa== 0:
-    Jogar= int(input('Quer jogar?[s/n]'))
+        if tentativa== 0:
+            print('A resposta era {}'.format(pais))
+            Jogar= (input('Quer jogar?[s/n]'))
+            if Jogar!= 's' and Jogar!='n':
+                print('resposta não esperada')
+                tentativa= 0
+            elif Jogar== 'n':
+                tentativa= -1
+            elif Jogar== 's':
+                pais= sorteia_pais(dic_paises)
+                print ('O país já foi sorteado\nPode começar')
+                tentativa= 20
+        
 
     
     
