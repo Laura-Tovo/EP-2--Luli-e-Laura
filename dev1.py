@@ -96,6 +96,7 @@ elif Jogar== 's':
             Jogar= (input('Quer jogar?[s/n]'))
             if Jogar!= 's' and Jogar!='n':
                 print('resposta não esperada')
+                Jogar= (input('Quer jogar?[s/n]'))
                 tentativa= 0
             elif Jogar== 'n':
                 tentativa= -1
