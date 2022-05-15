@@ -3,11 +3,17 @@ from paises import raio
 from random import*
 from math import*
 from funcoes import normaliza, sorteia_letra
-from funcoes import sorteia_pais
+from funcoes import sorteia_pais, esta_na_lista
 from funcoes import haversine
 from funcoes import sorteia_cor
 from funcoes import adiciona_em_ordem
+
 dic_paises= normaliza(dados)
+
+lista_paises_= []
+for i in dic_paises.keys():
+    x= [i]
+    lista_paises_.append(x)
 
 print('ACERTE O PAÍS')
 print('Como funciona:\n O computador sorteia um país e você tem que tentar adivinhar em 20 tentativas\n Se estiver muito difícil pode comprar dicas')
@@ -32,10 +38,11 @@ elif Jogar== 's':
         print('você tem {} tentativas'.format(tentativa))
         chute= input('Qual o país?')
         chute= chute.lower()
+        cond= esta_na_lista(chute, lista_paises_)
         if chute== pais:
             tentativa= 0
             print('Você acertou!!')
-        elif chute not in dic_paises.keys() and chute != 'dica' and chute!= 'desisto':
+        elif chute != 'dica' and chute!= 'desisto' and cond== False:
             print('inválido')
             tentativa= tentativa
         elif chute== 'dica':
@@ -75,7 +82,7 @@ elif Jogar== 's':
                 tentativa=tentativa
         elif chute== 'desisto':
             tentativa= 0
-        else:
+        else:  
             tentativa-= 1
             latitude_p= dic_paises[pais]['geo']['latitude']
             longitude_p= dic_paises[pais]['geo']['longitude']
@@ -90,7 +97,7 @@ elif Jogar== 's':
             lista_ordem=lista_ordem.replace(',','')
             lista_ordem=lista_ordem.replace('[','')
             lista_ordem=lista_ordem.replace(']','\n')
-            print(lista_ordem)
+            print(lista_ordem)    
         if tentativa== 0:
             print('A resposta era {}'.format(pais))
             Jogar= (input('Quer jogar?[s/n]'))
