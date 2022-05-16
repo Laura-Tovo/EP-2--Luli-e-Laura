@@ -5,8 +5,8 @@ from math import*
 from funcoes import normaliza, sorteia_letra
 from funcoes import sorteia_pais, esta_na_lista
 from funcoes import haversine
-from funcoes import sorteia_cor
-from funcoes import adiciona_em_ordem
+from funcoes import sorteia_cor, dicas
+from funcoes import adiciona_em_ordem, done
 
 dic_paises= normaliza(dados)
 
@@ -35,6 +35,7 @@ elif Jogar== 's':
             lista_sorteadas=[]
             lista_cores=[]
             paises_d= []
+    
         print('você tem {} tentativas'.format(tentativa))
         chute= input('Qual o país?')
         chute= chute.lower()
@@ -46,6 +47,7 @@ elif Jogar== 's':
             print('inválido')
             tentativa= tentativa
         elif chute== 'dica':
+            lista_dicas= []
             area= dic_paises[pais]['area']
             populacao= dic_paises[pais]['populacao']
             bandeira=dic_paises[pais]['bandeira']
@@ -55,12 +57,13 @@ elif Jogar== 's':
             letra_capital=sorteia_letra(capital,lista_restritas)
             lista_sorteadas.append(letra_capital)
             continente=dic_paises[pais]['continente']
-
-            print('Opções de dica:\n1. Área   -   vale 6 tentativas\n2. Letra da capital   -   vale 2 tentativa\n3. Cor da bandeira   -   vale 4 tentativas\n4. População   -   vale 5 tentativas\n5. Continente   -   vale 7 tentativas\n6. Voltar')
+            n= done(bandeira)
+            dica= dicas(lista_dicas, numeros)
+            print(('Opções de dica:\n{}\n 6. Voltar').format(dica))
             opcao= int(input(('Escolha sua opção: {}').format(numeros)))
             if opcao not in numeros:
                 print('opção inválida')
-                opcao= int(input('Escolha sua opção: 1/2/3/4/5/6'))
+                opcao= int(input(('Escolha sua opção: {}').format(numeros)))
             if opcao== 1 or opcao== 4 or opcao== 5:
                 numeros.remove(opcao)
             if opcao== 1:
@@ -68,9 +71,13 @@ elif Jogar== 's':
                 tentativa-=6
             elif opcao== 2:
                 print('Letra da capital {}'.format(lista_sorteadas))
+                if len(lista_sorteadas) == len(capital):
+                    numeros.remove(2)
                 tentativa-= 2
             elif opcao== 3:
                 print('Cores da bandeira {}'.format(lista_cores))
+                if n == len(lista_cores):
+                    numeros.remove(3)
                 tentativa-= 4
             elif opcao== 4:
                 print('A população é de {} pessoas'.format(populacao))

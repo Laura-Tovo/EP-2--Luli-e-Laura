@@ -118,6 +118,34 @@ def sorteia_cor(bandeira):
     escolhidas.append(escolha)
     return escolha
 
+def done(bandeira):
+    n= 0
+    for cor, quantidade in bandeira.items():
+        if cor == 'outras':
+            False
+        if quantidade>0:
+            n+=1
+    return n
+
+lista_dicas=[]
+def dicas(lista_dicas, numeros):
+    if 1 in numeros:
+        lista_dicas.append('1. Área   -   vale 6 tentativas')
+    if 2 in numeros:
+        lista_dicas.append('2. Letra da capital   -   vale 2 tentativa')
+    if 3 in numeros:
+        lista_dicas.append('3. Cor da bandeira   -   vale 4 tentativas')
+    if 4 in numeros:
+        lista_dicas.append('4. População   -   vale 5 tentativas')
+    if 5 in numeros:
+        lista_dicas.append('5. Continente   -   vale 7 tentativas')
+    lista_dicas= str(lista_dicas)
+    lista_dicas= lista_dicas.strip('[]')
+    lista_dicas= lista_dicas.strip('')
+    lista_dicas= lista_dicas.replace(',', '\n')
+    return (lista_dicas)
+    
+
 
         
         
