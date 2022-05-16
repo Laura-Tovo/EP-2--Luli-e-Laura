@@ -67,7 +67,7 @@ elif Jogar== 's':
             if opcao== 1 or opcao== 4 or opcao== 5:
                 numeros.remove(opcao)
             if opcao== 1:
-                print('A área é{}km²'.format(area))
+                print('A área é de {}km²'.format(area))
                 tentativa-=6
             elif opcao== 2:
                 print('Letra da capital {}'.format(lista_sorteadas))
@@ -96,8 +96,9 @@ elif Jogar== 's':
             latitude= dic_paises[chute]['geo']['latitude']
             longitude= dic_paises[chute]['geo']['longitude']
             distancia= haversine(raio, latitude, longitude, latitude_p, longitude_p)
-            print(('{:.2f} km').format(distancia))
-            lista_ordem= adiciona_em_ordem(chute, distancia, paises_d)
+            distancia_2= int(haversine(raio, latitude, longitude, latitude_p, longitude_p))
+            print(('Está a {:.2f} km do país sorteado').format(distancia))
+            lista_ordem= adiciona_em_ordem(chute, distancia_2, paises_d)
             paises_d= lista_ordem
             lista_ordem=str(lista_ordem)
             lista_ordem=lista_ordem.strip('[]')
