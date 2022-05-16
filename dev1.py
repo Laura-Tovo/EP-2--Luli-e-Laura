@@ -113,6 +113,7 @@ elif Jogar== 's':
                 Jogar= (input('Quer jogar?[s/n]'))
                 tentativa= 0
             elif Jogar== 'n':
+                print ('Até logo')
                 tentativa= -1
             elif Jogar== 's':
                 pais= sorteia_pais(dic_paises)
